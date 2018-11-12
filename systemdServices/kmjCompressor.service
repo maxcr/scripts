@@ -1,0 +1,17 @@
+[Unit]
+Description=Compress files
+After=kmjMoverWatcher.service
+
+[Service]
+User=root
+Group=root
+WorkingDirectory=/var/www/staticFiles/
+ExecStart=/home/maxr/src/skkriptz/kmjCompressor.sh
+ExecStop=fluffy exit
+Type=simple
+TimeoutStopSec=20
+KillMode=process
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

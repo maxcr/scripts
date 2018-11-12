@@ -1,0 +1,17 @@
+[Unit]
+Description=Watcher for filesystem changes
+After=kmjMover.service
+
+[Service]
+User=root
+Group=root
+WorkingDirectory=/home/maxr/www/bigcartel/kiss-mary-jane/source/
+ExecStart=fluffyctl --close-write -w ./
+Type=simple
+RemainAfterExit=true
+TimeoutStopSec=20
+KillMode=process
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

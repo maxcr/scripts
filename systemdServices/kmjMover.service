@@ -1,0 +1,17 @@
+[Unit]
+Description=Rename and move files from project directory.
+After=multi-user.target
+
+[Service]
+User=root
+Group=root
+WorkingDirectory=/home/maxr/www/bigcartel/kiss-mary-jane/source/
+ExecStart=/home/maxr/src/skkriptz/kmjMover.sh
+ExecStop=fluffy exit
+Type=simple
+TimeoutStopSec=20
+KillMode=process
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
