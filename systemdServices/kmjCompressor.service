@@ -1,6 +1,8 @@
 [Unit]
 Description=Compress files
-After=kmjMoverWatcher.service
+After=kmjMover.service kmjMoverWatcher.service
+Requires=kmjMover.service kmjMoverWatcher.service
+Before=kmjCompressorWatcher.service updateStaticFiles.service
 
 [Service]
 User=root
@@ -12,6 +14,7 @@ Type=simple
 TimeoutStopSec=20
 KillMode=process
 Restart=always
+RestartSec=5
 
 [Install]
 WantedBy=multi-user.target

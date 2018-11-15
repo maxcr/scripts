@@ -1,6 +1,7 @@
 [Unit]
 Description=Rename and move files from project directory.
 After=multi-user.target
+Before=kmjMoverWatcher.service kmjCompressor.service updateStaticFiles.service kmjCompressorWatcher.service
 
 [Service]
 User=root
@@ -12,6 +13,7 @@ Type=simple
 TimeoutStopSec=20
 KillMode=process
 Restart=always
+RestartSec=5
 
 [Install]
 WantedBy=multi-user.target

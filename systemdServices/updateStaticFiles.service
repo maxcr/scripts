@@ -1,6 +1,7 @@
 [Unit]
 Description=move files to server
-After=kmjCompressorWatcher.service
+After=kmjMover.service kmjMoverWatcher.service kmjCompressor.service kmjCompressorWatcher.service
+Requires=kmjMoverWatcher.service kmjMover.service kmjCompressorWatcher.service
 
 [Service]
 User=root
@@ -12,6 +13,7 @@ Type=simple
 TimeoutStopSec=20
 KillMode=process
 Restart=always
+RestartSec=5
 
 [Install]
 WantedBy=multi-user.target

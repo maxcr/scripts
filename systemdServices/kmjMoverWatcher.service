@@ -1,17 +1,18 @@
 [Unit]
 Description=Watcher for filesystem changes
+# Before=kmjCompressor.service kmjCompressorWatcher.service updateStaticFiles.service
 After=kmjMover.service
 
 [Service]
 User=root
 Group=root
-WorkingDirectory=/home/maxr/www/bigcartel/kiss-mary-jane/source/
-ExecStart=fluffyctl --close-write -w ./
+ExecStart=fluffyctl --close-write -w /home/maxr/www/bigcartel/kiss-mary-jane/source/
 Type=simple
 RemainAfterExit=true
 TimeoutStopSec=20
 KillMode=process
 Restart=always
+RestartSec=5
 
 [Install]
 WantedBy=multi-user.target

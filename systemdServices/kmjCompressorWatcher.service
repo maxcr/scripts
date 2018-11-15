@@ -2,16 +2,18 @@
 Description=Watcher for filesystem changes
 After=kmjCompressor.service
 
+
 [Service]
 User=root
 Group=root
-WorkingDirectory=/var/www/staticFiles/
-ExecStart=fluffyctl --close-write -w ./
+#WorkingDirectory=/var/www/staticFiles/
+ExecStart=fluffyctl --close-write -w /var/www/staticFiles/
 Type=simple
 RemainAfterExit=true
 TimeoutStopSec=20
 KillMode=process
 Restart=always
+RestartSec=5
 
 [Install]
 WantedBy=multi-user.target
